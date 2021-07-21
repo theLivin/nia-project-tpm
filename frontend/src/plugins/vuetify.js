@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify/lib/framework';
+import Vue from "vue";
+import Vuetify from "vuetify/lib/framework";
 
 Vue.use(Vuetify);
 
 export default new Vuetify({
   theme: {
-    // dark: true,
+    dark: true,
     themes: {
       light: {
         primary: "#000",

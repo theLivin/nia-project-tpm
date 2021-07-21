@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <v-app-bar app tile color="white">
+    <v-app-bar app tile>
       <div style="width: 100%; text-align:center;" class="mt-5 mb-3">
         <router-link to="/" style="text-decoration:none;"
-          ><h2 class="font-weight-bold">
-            NHIA
+          ><h2 class="font-weight-bold white--text">
+            NIA
           </h2></router-link
         >
         <span class="grey--text"> {{ $route.query.name || "Dashboard" }}</span>
