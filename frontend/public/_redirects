@@ -1,0 +1,2 @@
+# Redirects all routes to the index.html file with status 200
+/*   /index.html   200
