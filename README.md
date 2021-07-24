@@ -9,7 +9,7 @@
 - Open `backend/` in terminal.
 - Type `npm run devstart`
 
-> Note port server is running on.
+> Note the port server is running on.
 
 **Frontend**
 
