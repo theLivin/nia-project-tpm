@@ -34,45 +34,124 @@ var _nia = _interopRequireDefault(require("./routes/nia"));
 
 var _responses = _interopRequireDefault(require("./utils/responses"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
-_badr["default"].authenticate().then(function () {
-  return console.info(_constants.TextThemes.badr("Births and Deaths Registry connected on ".concat(new Date(), "\n")));
-})["catch"](function (e) {
-  return console.error(_constants.TextThemes.error("\nThis is the BaDR's error message: ".concat(_constants.TextThemes.badr(e.message), "\n")));
-});
+_badr["default"]
+  .authenticate()
+  .then(function () {
+    return console.info(
+      _constants.TextThemes.badr(
+        "Births and Deaths Registry connected on ".concat(new Date(), "\n")
+      )
+    );
+  })
+  ["catch"](function (e) {
+    return console.error(
+      _constants.TextThemes.error(
+        "\nThis is the BaDR's error message: ".concat(
+          _constants.TextThemes.badr(e.message),
+          "\n"
+        )
+      )
+    );
+  });
 
-_ec["default"].authenticate().then(function () {
-  return console.info(_constants.TextThemes.ec("Electoral Commission connected on ".concat(new Date(), "\n")));
-})["catch"](function (e) {
-  return console.error(_constants.TextThemes.error("\nThis is the EC's error message: ".concat(_constants.TextThemes.ec(e.message), "\n")));
-});
+_ec["default"]
+  .authenticate()
+  .then(function () {
+    return console.info(
+      _constants.TextThemes.ec(
+        "Electoral Commission connected on ".concat(new Date(), "\n")
+      )
+    );
+  })
+  ["catch"](function (e) {
+    return console.error(
+      _constants.TextThemes.error(
+        "\nThis is the EC's error message: ".concat(
+          _constants.TextThemes.ec(e.message),
+          "\n"
+        )
+      )
+    );
+  });
 
-_dvla["default"].authenticate().then(function () {
-  return console.info(_constants.TextThemes.dvla("Drivers and Vehicle Licensing Authority connected on ".concat(new Date(), "\n")));
-})["catch"](function (e) {
-  return console.error(_constants.TextThemes.error("\nThis is the DVLA's error message: ".concat(_constants.TextThemes.dvla(e.message), "\n")));
-});
+_dvla["default"]
+  .authenticate()
+  .then(function () {
+    return console.info(
+      _constants.TextThemes.dvla(
+        "Drivers and Vehicle Licensing Authority connected on ".concat(
+          new Date(),
+          "\n"
+        )
+      )
+    );
+  })
+  ["catch"](function (e) {
+    return console.error(
+      _constants.TextThemes.error(
+        "\nThis is the DVLA's error message: ".concat(
+          _constants.TextThemes.dvla(e.message),
+          "\n"
+        )
+      )
+    );
+  });
 
-_gis["default"].authenticate().then(function () {
-  return console.info(_constants.TextThemes.gis("Ghana Immigration Service connected on ".concat(new Date(), "\n")));
-})["catch"](function (e) {
-  return console.error(_constants.TextThemes.error("\nThis is GIS's error message: ".concat(_constants.TextThemes.gis(e.message), "\n")));
-});
+_gis["default"]
+  .authenticate()
+  .then(function () {
+    return console.info(
+      _constants.TextThemes.gis(
+        "Ghana Immigration Service connected on ".concat(new Date(), "\n")
+      )
+    );
+  })
+  ["catch"](function (e) {
+    return console.error(
+      _constants.TextThemes.error(
+        "\nThis is GIS's error message: ".concat(
+          _constants.TextThemes.gis(e.message),
+          "\n"
+        )
+      )
+    );
+  });
 
-_nhia["default"].authenticate().then(function () {
-  return console.info(_constants.TextThemes.nhia("National Health Insurance Authority connected on ".concat(new Date(), "\n")));
-})["catch"](function (e) {
-  return console.error(_constants.TextThemes.error("\nThis is NHIA's error message: ".concat(_constants.TextThemes.nhia(e.message), "\n")));
-}); // Express
-
+_nhia["default"]
+  .authenticate()
+  .then(function () {
+    return console.info(
+      _constants.TextThemes.nhia(
+        "National Health Insurance Authority connected on ".concat(
+          new Date(),
+          "\n"
+        )
+      )
+    );
+  })
+  ["catch"](function (e) {
+    return console.error(
+      _constants.TextThemes.error(
+        "\nThis is NHIA's error message: ".concat(
+          _constants.TextThemes.nhia(e.message),
+          "\n"
+        )
+      )
+    );
+  }); // Express
 
 var app = (0, _express["default"])();
 app.set("trust proxy", "loopback, linklocal, uniquelocal");
 app.use(_express["default"].json());
-app.use(_express["default"].urlencoded({
-  extended: true
-})); // const whitelist = ["http://localhost:8081"];
+app.use(
+  _express["default"].urlencoded({
+    extended: true,
+  })
+); // const whitelist = ["http://localhost:8081"];
 
 var options = {
   // origin: (origin, callback) => {
@@ -86,13 +165,13 @@ var options = {
     return callback(null, true);
   },
   credentials: true,
-  exposedHeaders: ["set-cookie", "eTag", "date"]
+  exposedHeaders: ["set-cookie", "eTag", "date"],
 };
 app.use((0, _cors["default"])(options));
 app.get("/", function (req, res) {
   return res.json({
     status: 1,
-    msg: "Yawa no dey"
+    msg: "Yawa no dey",
   });
 });
 app.use("/v1/dvla", _dvla2["default"]);
@@ -105,6 +184,7 @@ app.use(function (req, res) {
   return _responses["default"].notFoundResponse(res);
 });
 var PORT = process.env.PORT || 3000;
+
 app.listen(PORT, function () {
-  return console.log("Listening on PORT ".concat(PORT, "\n"));
+  return console.log("server running on port ".concat(PORT, "\n"));
 });
